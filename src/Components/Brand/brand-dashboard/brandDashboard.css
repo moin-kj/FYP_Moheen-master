@@ -1,0 +1,21 @@
+.notification-container {
+    position: relative;
+  }
+  
+  .notification-box {
+    position: absolute;
+    right: 0;
+    top: 44px;
+    z-index: 99999;
+  }
+  
+  .notification-triangle {
+    position: absolute;
+    top: -9px;
+    right: 30px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid white; /* Change this to your box background color */
+  }

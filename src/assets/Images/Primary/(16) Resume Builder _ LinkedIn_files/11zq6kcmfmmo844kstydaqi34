@@ -1,0 +1,43 @@
+define("profile-edit-shared-type-ahead/components/pe-basic-typeahead",["exports","@babel/runtime/helpers/esm/initializerDefineProperty","@babel/runtime/helpers/esm/defineProperty","@babel/runtime/helpers/esm/applyDecoratedDescriptor","@babel/runtime/helpers/esm/initializerWarningHelper","@ember/template-factory","@ember/component","global-utils/utils/is-browser","global-utils/utils/keyboard-utils","graphql-queries/queries/search/search-reusable-typeahead-collection-finder-type-query.graphql","@glimmer/tracking","@linkedin/restli-utils","@glimmer/component","rsvp","@ember/object","@ember/debug","@ember/service","@ember/destroyable","basic-typeahead/components/basic-typeahead","basic-typeahead/components/ta-fetch","@ember/helper","text-view-model/components/text-view-model-v2"],(function(e,t,a,r,i,l,n,o,s,p,c,u,d,h,f,y,g,m,b,_,v,w){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0})
+e.default=void 0
+var P,O,k,x,T,D,S
+e.default=(0,n.setComponentTemplate)((0,l.createTemplateFactory)({id:"WZ9O9H7n",block:'[[[1,"\\n"],[41,[30,1],[[[1,"      "],[10,"label"],[15,"for",[30,2]],[15,0,[29,["mb1 ",[52,[30,3],"required"]]]],[12],[1,"\\n        "],[1,[30,4]],[1,"\\n      "],[13],[1,"\\n"]],[]],null],[1,"\\n"],[1,"    "],[8,[32,0],[[16,0,[28,[32,1],["pe-artdeco-typeahead search-basic-typeahead search-vertical-typeahead relative ",[52,[30,5],[30,0,["zIndexClass"]]],[30,6]],null]],[17,7]],[["@initialKeywords","@onSubmit","@onExpand","@onCollapse","@onKeywordsUpdate"],[[30,0,["taInputValue"]],[30,0,["taSubmit"]],[30,0,["taActivate"]],[30,0,["taDismiss"]],[30,0,["taChange"]]]],[["default"],[[[[1,"\\n      "],[8,[30,8,["trigger"]],[[16,1,[30,2]]],[["@name","@autocomplete","@maxlength","@placeholder","@required","@onKeyUp"],[[30,9],"off",[30,10],[30,11],[30,3],[30,0,["onKeyUp"]]]],null],[1,"\\n"],[41,[30,8,["isExpanded"]],[[[1,"        "],[8,[32,2],null,[["@debouncePeriod","@keywords","@fetchFn","@onFetchResolve"],[0,[30,8,["currentKeywords"]],[30,0,["taFetch"]],[30,0,["taRespond"]]]],[["default"],[[[[1,"\\n"],[41,[30,13],[[[1,"            "],[8,[30,8,["triggered-content"]],null,null,[["default"],[[[[1,"\\n"],[42,[28,[31,2],[[28,[31,2],[[30,12]],null]],null],null,[[[1,"                "],[8,[30,14,["selectable"]],null,[["@keywordsValue","@onSelect","@value"],[[30,15,["title","text"]],[30,0,["taSelect"]],[30,15]]],[["default"],[[[[1,"\\n                  "],[10,0],[14,0,"pe-basic-typeahead-hit pe-artdeco-typeahead__suggestion"],[12],[1,"\\n                    "],[10,1],[14,0,"t-14 t-black t-normal"],[12],[1,"\\n                      "],[8,[32,3],null,[["@tvm"],[[30,15,["title"]]]],null],[1,"\\n                    "],[13],[1,"\\n                  "],[13],[1,"\\n                "]],[]]]]],[1,"\\n"]],[15,16]],null],[1,"            "]],[14]]]]],[1,"\\n"]],[]],null],[1,"        "]],[12,13]]]]],[1,"\\n"]],[]],null],[1,"    "]],[8]]]]],[1,"\\n  "]],["@showLabel","@inputId","@isRequired","@labelValue","@zIndex","@classNames","&attrs","ta","@inputName","@maxlength","@taPlaceholder","results","areResultsLoaded","content","result","index"],false,["if","each","-track-array"]]',moduleName:"profile-edit-shared-type-ahead/components/pe-basic-typeahead.gts",scope:()=>[b.default,v.concat,_.default,w.default],isStrictMode:!0}),(P=(0,g.inject)("tracking"),O=(0,g.inject)("@linkedin/ember-restli-graphql@graphql"),k=class extends d.default{constructor(e,r){super(e,r);(0,t.default)(this,"tracking",x,this);(0,t.default)(this,"graphql",T,this);(0,t.default)(this,"taInputValue",D,this);(0,a.default)(this,"shouldUseSchoolParams",!1);(0,t.default)(this,"disableOnTaChange",S,this);(0,a.default)(this,"zIndexClass",void 0)
+this.taInputValue=this.args.taInputValue
+const{zIndex:i}=this.args
+i&&(this.zIndexclassName=`pe-artdeco-typeahead__stack-index--${i}`)}taFetch(e){if(!e)return h.Promise.resolve([])
+return this._getQueryTypeaheadPromise(e).then((t=>{var a,r
+if((0,m.isDestroying)(this))return
+const i=t&&t.elements?t.elements:[]
+this.taInputValue=e
+null===(a=(r=this.args).onTaFetch)||void 0===a||a.call(r,i)
+const{filterFn:l}=this.args
+return"function"==typeof l?i.filter(l):i})).catch((e=>{if((0,m.isDestroying)(this))throw e
+if(Number(e.status)===u.httpStatus.S_500_INTERNAL_SERVER_ERROR)return[]
+throw e}))}taSubmit(e){const t=this.args.controlNamePrefix.toLowerCase()
+this.tracking.fireInteractionEvent(`${t}_typeahead_done`)
+"function"==typeof this.args.onTaSubmit&&this.args.onTaSubmit(e)}taSelect(e,t){const{controlNamePrefix:a}=this.args
+this.tracking.fireInteractionEvent(`${a}_typeahead_result`)
+"function"==typeof this.args.onTaSelect&&this.args.onTaSelect(t)
+this.disableOnTaChange=!0}taDismiss(){const{controlNamePrefix:e}=this.args
+this.tracking.fireInteractionEvent(`${e}_typeahead_cancel`)
+"function"==typeof this.args.onTaDismiss&&this.args.onTaDismiss()}taActivate(){const e=this._getNonAnchorPageKey()
+e&&this.tracking.firePageViewEvent(e)}taChange(e){this.taInputValue=e
+if(!this.disableOnTaChange){var t,a
+null===(t=(a=this.args).onTaChange)||void 0===t||t.call(a,e)}}taRespond(){var e,t
+null===(e=(t=this.args).onTaRespond)||void 0===e||e.call(t)}onKeyUp(e){o.default&&(0,s.isEscapeKey)(e)&&e.stopPropagation()}_getQueryTypeaheadPromise(e){const t={keywords:e,query:{},type:this.args.taType}
+return this.graphql.executeQuery(p.default,t,{reload:!0}).then((e=>{var t
+return null===(t=e.data)||void 0===t?void 0:t.searchDashReusableTypeaheadByType}))}_getNonAnchorPageKey(){switch(this.args.controlNamePrefix){case"title":case"role":return"flagship3_profile_self_title_typeahead"
+case"company":case"organization":case"authority":return"flagship3_profile_self_company_typeahead"
+case"location":return"flagship3_profile_self_region_typeahead"
+case"school":return"flagship3_profile_self_school_typeahead"
+case"degree":return"flagship3_profile_self_degree_typeahead"
+case"fos":return"flagship3_profile_self_fos_typeahead"
+case"people":return"flagship3_profile_self_people_typeahead"
+case"skill":return"flagship3_profile_self_skill_typeahead"
+case"language":return"flagship3_profile_self_language_typeahead"
+case"credential":return"flagship3_profile_self_credential_typeahead"
+default:return null}}},x=(0,r.default)(k.prototype,"tracking",[P],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),T=(0,r.default)(k.prototype,"graphql",[O],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),D=(0,r.default)(k.prototype,"taInputValue",[c.tracked],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),S=(0,r.default)(k.prototype,"disableOnTaChange",[c.tracked],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return!1}}),(0,r.default)(k.prototype,"taFetch",[f.action],Object.getOwnPropertyDescriptor(k.prototype,"taFetch"),k.prototype),(0,r.default)(k.prototype,"taSubmit",[f.action],Object.getOwnPropertyDescriptor(k.prototype,"taSubmit"),k.prototype),(0,r.default)(k.prototype,"taSelect",[f.action],Object.getOwnPropertyDescriptor(k.prototype,"taSelect"),k.prototype),(0,r.default)(k.prototype,"taDismiss",[f.action],Object.getOwnPropertyDescriptor(k.prototype,"taDismiss"),k.prototype),(0,r.default)(k.prototype,"taActivate",[f.action],Object.getOwnPropertyDescriptor(k.prototype,"taActivate"),k.prototype),(0,r.default)(k.prototype,"taChange",[f.action],Object.getOwnPropertyDescriptor(k.prototype,"taChange"),k.prototype),(0,r.default)(k.prototype,"taRespond",[f.action],Object.getOwnPropertyDescriptor(k.prototype,"taRespond"),k.prototype),(0,r.default)(k.prototype,"onKeyUp",[f.action],Object.getOwnPropertyDescriptor(k.prototype,"onKeyUp"),k.prototype),k))}))
+define("profile-edit-shared-type-ahead/template-registry",[],(function(){}))
+
+//# sourceMappingURL=engine-vendor.map
